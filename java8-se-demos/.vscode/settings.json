@@ -1,7 +1,8 @@
 {
+    "explorer.compactFolders": true, // 合并文件夹
     "editor.fontSize": 16,
     // JDK路径
-    // 注：插件 Language Support for Java(TM) by Red Hat 需要的最低的JDK版本是 11 
+    // 注：插件 Language Support for Java(TM) by Red Hat 需要的最低的JDK版本是 11
     // 可以安装 0.64.1 版本
     "java.home": "C:\\Program Files\\Java\\jdk-11.0.12",
     // Java调试器的日志级别。
@@ -10,7 +11,7 @@
 	//  - internalConsole: VS Code调试控制台（不支持输入流）。
 	//  - integratedTerminal: VS Code集成终端。
 	//  - externalTerminal: 外部终端（可在用户设置中修改）。
-    "java.debug.settings.console": "integratedTerminal",
+    "java.debug.settings.console": "externalTerminal",
     // Java运行时环境配置
     // "java.configuration.runtimes": [{
     //     "name": "JavaSE-1.8",
