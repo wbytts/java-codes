@@ -2,20 +2,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch RunSysCommandDemo",
-            "request": "launch",
-            "mainClass": "com.by.demo.RunSysCommandDemo",
-            "projectName": "java8-se-demos"
-        },
-        {
-            "type": "java",
-            "name": "Launch HelloWorld",
-            "request": "launch",
-            "mainClass": "com.by.demo.HelloWorld",
-            "projectName": "java8-se-demos"
-        },
-        {
-            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
