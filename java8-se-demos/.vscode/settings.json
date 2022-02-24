@@ -14,7 +14,7 @@
       "path": "C:\\Program Files\\Java\\jdk1.8.0_301\\jre"
     }
   ],
-  "java.configuration.updateBuildConfiguration": "interactive",
+  "java.configuration.updateBuildConfiguration": "automatic",
   // Java调试器的日志级别。
   "java.debug.logLevel": "warn",
   // 指定的控制台用于启动Java程序。如果要为特定的调试会话自定义控制台，请修改launch.json中的“console”配置。
