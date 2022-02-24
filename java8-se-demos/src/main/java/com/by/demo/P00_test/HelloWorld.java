@@ -1,8 +1,15 @@
-package com.by.demo.P00_test;
+package com.by.demo.p00_test;
 
 
 public class HelloWorld {
     public static void main(String[] args)  {
-        System.out.println("Hello World你好啊");
+        String str = """
+            《静夜思》
+            窗前明月光，
+            疑是地上霜。
+            举头望明月，
+            低头思故乡。
+        """;
+        System.out.println(str);
     }
 }
