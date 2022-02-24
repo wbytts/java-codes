@@ -23,7 +23,7 @@
   //  - externalTerminal: 外部终端（可在用户设置中修改）。
   "java.debug.settings.console": "externalTerminal",
   // 启动Java程序的默认VM参数。例如，使用'-Xmx1G -ea'将堆大小增加到1GB并启用断言。如果要为特定的调试会话定制VM参数，请修改launch.json中的'vmArgs'配置。
-  "java.debug.settings.vmArgs": "-Dfile.encoding=utf8 -Xmx1G -ea",
+  "java.debug.settings.vmArgs": "-Dfile.encoding=utf8 -Dconsole.encoding=utf8 -Xmx1G -ea",
   "java.dependency.showMembers": true,
   // JDK路径
   // 注：插件 Language Support for Java(TM) by Red Hat 需要的最低的JDK版本是 11

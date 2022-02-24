@@ -24,6 +24,6 @@ public class JacksonDemo01 {
         System.out.println(new String(buf));
         reader.close();
     }
-    
+
 }
 
