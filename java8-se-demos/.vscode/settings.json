@@ -4,7 +4,9 @@
     // JDK路径
     // 注：插件 Language Support for Java(TM) by Red Hat 需要的最低的JDK版本是 11
     // 可以安装 0.64.1 版本
-    "java.home": "C:\\Program Files\\Java\\jdk-11.0.12",
+    // "java.home": "C:\\Program Files\\Java\\jdk-11.0.12",
+    // jdk-17.0.1
+    "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk-11.0.12",
     // Java调试器的日志级别。
 	"java.debug.logLevel": "warn",
 	// 指定的控制台用于启动Java程序。如果要为特定的调试会话自定义控制台，请修改launch.json中的“console”配置。

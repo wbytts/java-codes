@@ -1,4 +1,4 @@
-package com.by.demo;
+package com.by.demo.P00_test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
