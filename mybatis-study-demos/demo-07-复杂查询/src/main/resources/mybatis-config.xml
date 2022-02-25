@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+        核心配置文件
+        可配置项的编写顺序（不按这个顺序写可能会报错）：
+            properties（属性）
+            settings（设置）
+            typeAliases（类型别名）
+            typeHandlers（类型处理器）
+            objectFactory（对象工厂）
+            plugins（插件）
+            environments（环境配置）
+                environment（环境变量）
+                    transactionManager（事务管理器）
+                    dataSource（数据源）
+            databaseIdProvider（数据库厂商标识）
+            mappers（映射器）
+    -->
+
+    <!--
+        properties：用来定义一些属性，需要在 environment 之前
+        可以直接引入外部配置文件
+        也可以在内部使用 property 标签来定义属性，如何有和外部相同的属性，则优先使用外部的属性
+    -->
+    <properties resource="db.properties" />
+
+    <!--
+        settings：定义一些设置，具体设置项看文档
+    -->
+    <settings>
+        <!-- cacheEnabled：全局性地开启或关闭所有映射器配置文件中已配置的任何缓存 -->
+        <setting name="cacheEnabled" value="false"/>
+
+        <!-- logImpl：指定 MyBatis 所用日志的具体实现，未指定时将自动查找 -->
+        <!--
+            日志配置的标准值实现 STDOUT_LOGGING
+            <setting name="logImpl" value="STDOUT_LOGGING"/>
+        -->
+        <!--
+            配置log4j日志实现
+            <setting name="logImpl" value="LOG4J"/>
+        -->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <!--
+        typeAliases：配置类型别名
+            配置方式1：typeAlias，直接用type指定实体类，用alias指定对应的别名
+            配置方式2：package，配置一个包，如果没有使用注解，默认以包内Bean的小驼峰式的非限定名作为别名（其实大写也可以扫描出来的）
+            说明：
+                在实体类比较少的时候，使用第一种方式，如果实体类很多，建议使用第二种
+                第一种可以DIY类名，而第二种则不行（但是可以在实体类上添加注解来起别名 @Alias("xxx") 标在实体类上即可 ）
+
+            Java 类型有一些内建的相应的类型别名。它们是不区分大小写的，注意对基本类型名称重复采取的特殊命名风格。
+                _基本类型     对应    基本类型
+                基本类型      对应    包装类型
+                小写          对应    Date、BigDecimal等等 （具体查文档！）
+    -->
+    <typeAliases>
+        <typeAlias type="com.by.pojo.Student" alias="Student" />
+        <typeAlias type="com.by.pojo.Teacher" alias="Teacher" />
+    </typeAliases>
+
+    <!--
+        plugins：配置插件
+    -->
+
+
+    <!--配置数据库环境，默认使用development环境-->
+    <environments default="development">
+        <!--配置一个环境 development-->
+        <environment id="development">
+            <!--
+                配置事务管理器  JDBC
+            -->
+            <transactionManager type="JDBC"/>
+            <!--
+                数据源，有连接池
+                POLLED
+            -->
+            <dataSource type="POOLED">
+                <!-- 数据库驱动 -->
+                <property name="driver" value="${db.driver}"/>
+                <!-- 数据库连接 -->
+                <property name="url" value="${db.url}"/>
+                <!-- 用户名 -->
+                <property name="username" value="${db.username}"/>
+                <!-- 密码 -->
+                <property name="password" value="${db.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+    <!--
+        MapperRegister
+        映射器：给相关接口中的方法提供实现，需要在这个文件中配置映射器的位置
+            映射器一般是 接口类名+Mapper.xml
+            每一个 XXXMapper.xml 都需要在核心配置文件中注册
+
+        注册方式：
+            mapper：
+                resource：mapper.xml资源文件路径   xxx/xxx/xxx.xml
+                url：file:///.....
+                class：xxx.xxx.xxxMapper
+            package：
+                name：将指定包内的映射器接口实现全部注册为映射器
+    -->
+    <mappers>
+        <mapper resource="mapper/StudentMapper.xml"/>
+        <mapper resource="mapper/TeacherMapper.xml"/>
+    </mappers>
+
+</configuration>

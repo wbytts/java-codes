@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.by.mapper.StudentMapper">
+
+    <resultMap id="StudentInfoMap" type="Student">
+        <result property="id" column="id" />
+        <result property="name" column="name" />
+        <!--
+            复杂的属性，我们需要单独处理
+            1. 如果是对象，我们使用association
+            2. 如果是集合，我们使用 collection
+        -->
+        <!-- 方式一：类似子查询的写法，按照查询嵌套处理，缺点：可能执行多次SQL -->
+        <association property="teacher" javaType="com.by.pojo.Teacher" column="tid" select="getTeacher" />
+        <!-- 方式二：关联查询，按照结果关联数据，见 StudentInfoMap2 -->
+    </resultMap>
+
+    <resultMap id="StudentInfoMap2" type="Student">
+        <result property="id" column="s_id" />
+        <result property="name" column="s_name" />
+        <!-- 方式二：关联查询，按照结果关联数据 -->
+        <association property="teacher" javaType="com.by.pojo.Teacher">
+            <result property="id" column="t_id" />
+            <result property="name" column="t_name" />
+        </association>
+    </resultMap>
+
+    <select id="getTeacher" resultType="com.by.pojo.Teacher">
+        select * from teacher where id=#{id}
+    </select>
+
+    <select id="getStudentsInfo" resultMap="StudentInfoMap">
+        select * from student
+    </select>
+
+    <select id="getStudentsInfo2" resultMap="StudentInfoMap2">
+        select s.id as s_id, s.name as s_name, t.id as t_id, t.name as t_name
+        from Student s, Teacher t
+        where s.tid = t.id
+    </select>
+</mapper>

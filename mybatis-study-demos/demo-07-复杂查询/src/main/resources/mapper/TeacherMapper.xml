@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.by.mapper.TeacherMapper">
+
+    <resultMap id="TeacherInfoMap" type="Teacher">
+        <result property="id" column="tid" />
+        <result property="name" column="tname" />
+        <!--
+            集合对象，要使用 collection 来处理
+            集合中值的类型 使用 ofType 属性指定
+                javaType：指定实体类的属性类型
+                ofType：指定映射到集合中的实体类型，即泛型中的约束类型
+            在 collection 中，再指定相关字段的对应关系
+        -->
+        <collection property="students" ofType="com.by.pojo.Student">
+            <result property="name" column="sname" />
+            <result property="id" column="sid" />
+            <result property="tid" column="tid" />
+        </collection>
+    </resultMap>
+
+    <select id="getTeacher" resultMap="TeacherInfoMap">
+        select s.id sid, s.name sname, t.name tname, t.id tid
+        from student s, teacher t
+        where s.tid = t.id and t.id = #{tid}
+    </select>
+</mapper>

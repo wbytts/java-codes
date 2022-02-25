@@ -1,0 +1,17 @@
+[ERROR][20-10-02 02:20:46][com.by.test.BingTest]# [info]: 测试查找所有用户的方法-------开始
+[DEBUG][20-10-02 02:20:46][org.apache.ibatis.logging.LogFactory]# Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-10-02 02:20:46][org.apache.ibatis.logging.LogFactory]# Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][20-10-02 02:20:46][org.apache.ibatis.datasource.pooled.PooledDataSource]# PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-10-02 02:20:46][org.apache.ibatis.datasource.pooled.PooledDataSource]# PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-10-02 02:20:46][org.apache.ibatis.datasource.pooled.PooledDataSource]# PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-10-02 02:20:46][org.apache.ibatis.datasource.pooled.PooledDataSource]# PooledDataSource forcefully closed/removed all connections.
+[DEBUG][20-10-02 02:20:46][org.apache.ibatis.transaction.jdbc.JdbcTransaction]# Opening JDBC Connection
+[DEBUG][20-10-02 02:20:49][org.apache.ibatis.datasource.pooled.PooledDataSource]# Created connection 386163331.
+[DEBUG][20-10-02 02:20:49][org.apache.ibatis.transaction.jdbc.JdbcTransaction]# Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@17046283]
+[DEBUG][20-10-02 02:20:49][com.by.dao.UserDao.getUserList]# ==>  Preparing: select * from user 
+[DEBUG][20-10-02 02:20:50][com.by.dao.UserDao.getUserList]# ==> Parameters: 
+[DEBUG][20-10-02 02:20:50][com.by.dao.UserDao.getUserList]# <==      Total: 8
+[DEBUG][20-10-02 02:20:50][org.apache.ibatis.transaction.jdbc.JdbcTransaction]# Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@17046283]
+[DEBUG][20-10-02 02:20:50][org.apache.ibatis.transaction.jdbc.JdbcTransaction]# Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@17046283]
+[DEBUG][20-10-02 02:20:50][org.apache.ibatis.datasource.pooled.PooledDataSource]# Returned connection 386163331 to pool.
+[INFO ][20-10-02 02:20:50][com.by.test.BingTest]# [info]: 测试查找所有用户的方法-------结束

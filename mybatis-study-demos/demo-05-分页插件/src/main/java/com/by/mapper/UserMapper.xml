@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 绑定一个指定的 Dao 接口 -->
+<mapper namespace="com.by.mapper.UserDao">
+
+    <!--
+        结果集映射
+    -->
+    <resultMap id="UserMap" type="com.by.pojo.User" >
+        <!-- 指定表中的主键对应的实体类属性 -->
+        <!-- <id column="id" property="id"  /> -->
+        <!-- 更一般的，使用 result 标签指定 -->
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="pwd" property="password" />
+    </resultMap>
+
+    <!--
+        查询方法：
+        id：与接口中的方法名对应
+        resultType：查询结果映射为什么类型
+
+        注意：这里，pwd 与 实体类的 password 并不一致，会导致查到的结果映射不到 password 属性上，得到 null
+        解决方法1：在 SQL 中起别名，与实体类的属性名对应即可
+        解决方法2：使用 resultMap 结果集映射
+    -->
+    <select id="getUserList" resultMap="UserMap">
+        select * from user
+    </select>
+
+    <!--
+        按id查询对象方法：
+        如果方法中传了参数，在SQL中可以用 #{XXX} 的形式引用
+    -->
+    <select id="getUserById" resultType="com.by.pojo.User">
+        select * from user where id=#{id}
+    </select>
+
+    <!--
+        插入方法实现：
+        参数如果是一个对象，对象中的属性可以直接用 #{} 语法取出来
+    -->
+    <insert id="addUser">
+        insert user (id, name, pwd) values (#{id}, #{name}, #{password});
+    </insert>
+
+    <!--
+        更新方法实现：
+    -->
+    <update id="updateUser">
+        update user set name=#{name}, pwd=#{password} where id=#{id}
+    </update>
+
+    <!--
+        删除语句
+    -->
+    <delete id="deleteUser">
+        delete from user where id=#{id}
+    </delete>
+
+    <!--
+        通过 Map 传参（在参数过多的情况下考虑使用）
+        parameterType="map"
+        取值和 Map 的 key 对应
+    -->
+    <insert id="addUserMap" parameterType="map">
+        insert user (id, name, pwd) values (#{id}, #{name}, #{password})
+    </insert>
+
+    <!--
+        limit 分页查询
+        语法：select * from xxx limit 起始索引, 每页大小
+        如果只给定了 起始索引 一个参数，则从这个位置开始返回后面所有内容
+    -->
+    <select id="selectUserPageByLimit" resultMap="UserMap">
+        select * from user limit #{startIndex}, #{pageSize}
+    </select>
+
+    <select id="selectUserPageByRowBounds" resultMap="UserMap">
+        select * from user
+    </select>
+</mapper>
