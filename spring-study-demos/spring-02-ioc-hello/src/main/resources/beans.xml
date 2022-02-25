@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <!--
+        在这个配置文件中，可以配置对象
+        Spring 会根据配置，帮你创建对象（控制反转）
+        bean 相当于 对象，配置 bean，相当于 new Hello()
+        id 等价于 变量名，class 指示需要创建的对象的类型（全限定名）
+        property 给对象中的属性设置值（这里依赖 setXXX 方法）
+
+        IoC 就是指，对象由 Spring 来 创建、管理、装配
+    -->
+    <bean id="hello" class="com.by.pojo.Hello">
+        <property name="str" value="Spring" />
+    </bean>
+
+    <!--
+        bean配置的参数：
+            id：bean 的标识符，相当于对象名
+            class：bean 对象的类型的全限定名  包名 + 类名
+            name：对象的别名们可以同时取多个别名，使用逗号进行分隔（或者分号、空格等进行分隔都行）
+            scope：作用域 默认是单例
+    -->
+
+    <!--
+        默认情况下使用无参构造器创建对象
+    -->
+    <bean id="user" class="com.by.pojo.User">
+        <property name="name" value="wangby" />
+    </bean>
+
+    <bean id="user1" class="com.by.pojo.User">
+        <!-- 第一种方式，通过构造器下标指定有参构造的参数 -->
+        <constructor-arg index="0" value="wangby1" />
+    </bean>
+
+    <bean id="user2" class="com.by.pojo.User">
+        <!--
+            第二种方式，通过构造器参数的类型来匹配
+            问题是，如果多个参数类型相同，则会出错
+        -->
+        <constructor-arg type="java.lang.String" value="wangby2" />
+    </bean>
+
+    <bean id="user3" class="com.by.pojo.User">
+        <!--
+            第三种方式，通过参数名指定有参构造的参数
+        -->
+        <constructor-arg name="name" value="wangby3" />
+    </bean>
+
+    <!-- 给 bean 起别名，原名和别名都可以使用 -->
+    <alias name="user2" alias="userTwo" />
+
+</beans>

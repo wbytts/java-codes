@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:tool="http://www.springframework.org/schema/tool"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+        http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd">
+
+    <bean id="dog" class="com.by.pojo.Dog" />
+    <bean id="cat" class="com.by.pojo.Cat" />
+
+    <bean id="person" class="com.by.pojo.Person" >
+        <property name="name" value="张三" />
+        <property name="dog" ref="dog" />
+        <property name="cat" ref="cat" />
+    </bean>
+
+    <!--
+        autowire="byName" ： 会自动在容器上下文中查找和自己set方法后面的值对应的bean的id，按照这个id进行注入
+    -->
+    <bean id="person2" class="com.by.pojo.Person" autowire="byName">
+        <property name="name" value="张三" />
+    </bean>
+
+    <!--
+        autowire="byType" ： 会自动在容器上下文中查找和自己对象属性类型相同的 bean
+    -->
+    <bean id="person3" class="com.by.pojo.Person" autowire="byType">
+        <property name="name" value="张三" />
+    </bean>
+
+
+    <!--
+        注：在Spring4之后，要使用注解开发，必须要保证aop的包导入了
+
+        使用注解实现自动装配： 需要在配置文件中开启注解支持 <context:annotation-config />
+            @Required：
+            @Autowired：可以使用在属性上，或者 set 方法上，能根据名称进行注入（使用在属性上时，可以不要set方法，前提是自动装配的属性在容器中存在才可以）
+                可以配置一个选项：required=false，表示可以为 null，默认为真表示需要一个具体的对象
+            @Qualifier(value=xxx)：显式指定一个唯一的beanid进行注入（当类型有重复的时候，Autowired是先按类型，再按名字，都找不到的时候，需要@Qualifier配合指定）
+
+            @Resource：是一个java的注解，也可以自动装配，先通过名字查找，再通过类型查找
+                可以使用 name=xxx 指定beanid
+
+            @Nullable：标记在构造器参数中，表示这个字段可以为 null
+   -->
+    <context:annotation-config />
+
+</beans>

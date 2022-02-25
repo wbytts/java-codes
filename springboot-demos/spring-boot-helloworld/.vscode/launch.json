@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-Application<spring-boot-helloworld>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "hello.Application",
+      "projectName": "spring-boot-helloworld",
+      "args": ""
+    }
+  ]
+}

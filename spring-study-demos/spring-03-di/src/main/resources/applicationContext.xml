@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        默认情况下使用无参构造器创建对象
+    -->
+    <bean id="user" class="com.by.pojo.User">
+        <property name="name" value="wangby" />
+    </bean>
+
+    <bean id="user1" class="com.by.pojo.User">
+        <!-- 第一种方式，通过构造器下标指定有参构造的参数 -->
+        <constructor-arg index="0" value="wangby1" />
+    </bean>
+
+    <bean id="user2" class="com.by.pojo.User">
+        <!--
+            第二种方式，通过构造器参数的类型来匹配
+            问题是，如果多个参数类型相同，则会出错
+        -->
+        <constructor-arg type="java.lang.String" value="wangby2" />
+    </bean>
+
+    <bean id="user3" class="com.by.pojo.User">
+        <!--
+            第三种方式，通过参数名指定有参构造的参数
+        -->
+        <constructor-arg name="name" value="wangby3" />
+    </bean>
+
+    <bean id="address" class="com.by.pojo.Address">
+    </bean>
+    <!--
+        各种类型的值的注入
+    -->
+    <bean id="student" class="com.by.pojo.Student">
+        <!-- 普通值的注入，直接使用 value -->
+        <property name="name" value="wangby" />
+        <!-- bean 的注入，使用 ref -->
+        <property name="address" ref="address" />
+        <!-- [] 数组的注入 -->
+        <property name="books">
+            <array>
+                <value>西游记</value>
+                <value>红楼梦</value>
+                <value>三国演义</value>
+                <value>水浒传</value>
+            </array>
+        </property>
+        <!-- list 注入 -->
+        <property name="hobbies">
+            <list>
+                <value>听歌</value>
+                <value>打游戏</value>
+                <value>看电影</value>
+            </list>
+        </property>
+        <!-- map 注入 -->
+        <property name="card">
+            <map>
+                <entry key="c1" value="v1" />
+                <entry key="c2" value="v2" />
+                <entry key="c3" value="v3" />
+            </map>
+        </property>
+        <!-- set 注入 -->
+        <property name="games">
+            <set>
+                <value>王者荣耀</value>
+                <value>明日方舟</value>
+            </set>
+        </property>
+        <!-- prop 注入 -->
+        <property name="info">
+            <props>
+                <prop key="p1">v1</prop>
+                <prop key="p2">v2</prop>
+            </props>
+        </property>
+        <!-- null 值 -->
+        <property name="wife">
+            <null />
+        </property>
+    </bean>
+    
+
+    <!--
+        p 命名空间（xmlns:p="http://www.springframework.org/schema/p"）
+            可以直接注入属性，在bean标签中 如 p:name=xxx p:age=xxx
+    -->
+    <bean id="userP" class="com.by.pojo.User" p:name="userP" />
+
+    <!--
+        c 命名空间（xmlns:c="http://www.springframework.org/schema/c"）
+            可以使用有参构造器进行注入
+    -->
+    <bean id="userC" class="com.by.pojo.User" c:name="userC"/>
+
+</beans>
