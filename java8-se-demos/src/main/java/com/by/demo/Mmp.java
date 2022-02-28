@@ -1,8 +1,12 @@
 ﻿package com.by.demo;
 
+import cn.hutool.core.util.StrUtil;
+
 public class Mmp {
     public static void main(String[] args) {
-
+        String str = "100101";
+        String result = StrUtil.padPre(str, 8, "0");
+        System.out.println(result);
     }
 
     /*
