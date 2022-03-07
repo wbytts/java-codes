@@ -1,4 +1,4 @@
-﻿package com.by.demo.json.gson;
+package com.by.demo.json.gson;
 
 import com.google.gson.Gson;
 

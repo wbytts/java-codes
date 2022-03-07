@@ -1,4 +1,4 @@
-﻿package com.by.demo.gui.javafx;
+package com.by.demo.gui.javafx;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;

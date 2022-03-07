@@ -1,4 +1,4 @@
-﻿package com.by.demo.hutool.字符串;
+package com.by.demo.hutool.字符串;
 
 import cn.hutool.core.util.StrUtil;
 

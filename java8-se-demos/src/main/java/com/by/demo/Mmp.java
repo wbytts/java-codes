@@ -1,4 +1,4 @@
-﻿package com.by.demo;
+package com.by.demo;
 
 import cn.hutool.core.util.StrUtil;
 

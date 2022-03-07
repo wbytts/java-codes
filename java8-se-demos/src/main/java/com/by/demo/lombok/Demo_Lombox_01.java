@@ -1,4 +1,4 @@
-﻿package com.by.demo.lombok;
+package com.by.demo.lombok;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

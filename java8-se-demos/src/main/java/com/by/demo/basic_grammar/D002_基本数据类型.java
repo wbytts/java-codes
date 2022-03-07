@@ -1,4 +1,4 @@
-﻿package com.by.demo.basic_grammar;
+package com.by.demo.basic_grammar;
 
 public class D002_基本数据类型 {
     public static void main(String[] args) {
