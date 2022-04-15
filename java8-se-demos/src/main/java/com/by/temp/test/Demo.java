@@ -1,4 +1,4 @@
-package com.by.demo.p00_test;
+package com.by.temp.test;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package com.by.demo.p00_test;
+package com.by.temp.test;
 
 
 public class HelloWorld {
