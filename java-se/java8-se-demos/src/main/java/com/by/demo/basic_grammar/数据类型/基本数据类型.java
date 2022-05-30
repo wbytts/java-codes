@@ -1,6 +1,6 @@
-package com.by.demo.basic_grammar;
+package com.by.demo.basic_grammar.数据类型;
 
-public class D002_基本数据类型 {
+public class 基本数据类型 {
     public static void main(String[] args) {
         /*
             整数类型：byte、short、int、long
